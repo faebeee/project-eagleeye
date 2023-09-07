@@ -1,6 +1,6 @@
 // @ts-ignore
 import SitemapXMLParser from 'sitemap-xml-parser'
-import { SitemapSiteEntry } from '@/lib/sitemap/sitemap'
+import { SitemapSiteEntry } from './sitemap'
 
 export const getListOfSites = async (url: string): Promise<string[]> => {
   const options = {

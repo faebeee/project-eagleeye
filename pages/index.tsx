@@ -19,6 +19,12 @@ export const MainPage = () => {
             <Button>Open Graph Check</Button>
           </Link>
         </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Link href={`/sitemap?site=${url}`}>
+            <Button>Inspect sitemap</Button>
+          </Link>
+        </GridColumn>
       </GridRow>
     </main>
   )

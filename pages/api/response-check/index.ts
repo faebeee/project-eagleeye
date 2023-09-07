@@ -1,12 +1,10 @@
-export const getResponseCheck = async (req: Request) => {
-  const {searchParams} = new URL(req.url)
-  const siteToScrape = searchParams.get('site')
+import { NextApiHandler } from 'next'
+
+export const getResponseCheck: NextApiHandler = async (req, res) => {
+  const siteToScrape = req.query.site as string
 
   const response = await fetch(siteToScrape!)
-  if (response.status >= 400) {
-    return false
-  }
-  return true
+  return res.send({status: response.status})
 }
 
 export default getResponseCheck
