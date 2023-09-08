@@ -1,10 +1,10 @@
 import { getListOfSites } from '../../../lib/sitemap/get-list-of-sites'
+import { NextApiHandler } from 'next'
 
-export const getSitemapEntries = async (req: Request) => {
-  const {searchParams} = new URL(req.url)
-  const url = searchParams.get('site')
-
-  return getListOfSites(`${url!}/sitemap.xml`)
+export const getSitemapEntries: NextApiHandler = async (req, res) => {
+  const siteToScrape = req.query.site as string
+  const list = await getListOfSites(`${siteToScrape}`)
+  return res.send(list)
 }
 
 export default getSitemapEntries

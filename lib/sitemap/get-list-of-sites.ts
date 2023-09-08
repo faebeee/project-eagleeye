@@ -8,8 +8,12 @@ export const getListOfSites = async (url: string): Promise<string[]> => {
     limit: 5
   }
 
-  const sitemapXMLParser = new SitemapXMLParser(url, options)
+  try {
+    const sitemapXMLParser = new SitemapXMLParser(url, options)
 
-  const result = (await sitemapXMLParser.fetch()) as SitemapSiteEntry[]
-  return result.map((r) => r.loc[0])
+    const result = (await sitemapXMLParser.fetch()) as SitemapSiteEntry[]
+    return result.map((r) => r.loc[0])
+  }catch(e) {
+    return []
+  }
 }

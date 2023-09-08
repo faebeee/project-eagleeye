@@ -1,0 +1,14 @@
+.root {
+
+}
+
+.header {
+    max-width: 1440px;
+    margin: 0 auto;
+    border-bottom: solid 1px var(--theme--colors--palettes--neutral--dark);
+    padding: 24px 36px;
+}
+
+.content {
+    padding: 24px 36px;
+}
