@@ -12,7 +12,7 @@ import { PageSpeedOverview } from '../src/components/page-speed-overview/page-sp
 import { Surface } from '../src/components/surface/surface'
 import { CssOverview } from '../src/components/css-overview/css-overview'
 
-export const getServerSideProps: GetServerSideProps = (req) => {
+export const getServerSideProps: GetServerSideProps<{site:string}> = async (req) => {
   const site = req.query.site as string ?? ''
 
   return {
