@@ -30,7 +30,7 @@ export const ResponseStatus = ({site}: ResponseStatusProps) => {
     </Avatar>
   }
 
-  return <Avatar color={color} size={'small'}>
+  return <Avatar color={color as string} size={'small'}>
     {isValid ?
       <CheckIcon color={`${color}.contrast`} />
       :
