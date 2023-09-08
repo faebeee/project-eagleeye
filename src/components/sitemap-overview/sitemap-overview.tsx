@@ -15,18 +15,17 @@ export const SitemapOverview = ({site}: SitemapOverviewProps) => {
   })
 
   if (data.isLoading) {
-    return <Typography>Loading...</Typography>
+    return <Typography color={'text.secondary'}>Loading...</Typography>
   }
 
   return <GridRow>
     <GridColumn colSpan={12}>
-      <Typography variant={'heading2'}>Sitemap</Typography>
-      <Typography>Found {data.data?.length ?? 0} Sites</Typography>
+      <Typography color={'text.primary'}>Found {data.data?.length ?? 0} Sites</Typography>
     </GridColumn>
     <GridColumn colSpan={12}>
       <List className={classes.list}>
-        {data.data?.map((s) => (<ListItem key={s} color={'primary'} prefix={<ResponseStatus site={s} />}>
-          <Typography>{s}</Typography>
+        {data.data?.map((s) => (<ListItem key={s} prefix={<ResponseStatus site={s} />}>
+          <Typography color={'text.primary'}>{s}</Typography>
         </ListItem>))}
       </List>
     </GridColumn>

@@ -11,9 +11,9 @@ export const ShowOnRequest = ({showInitial = false, children}: ShowOnRequestProp
     return <>{children}</>
   }
 
-  return <div>
+  return <>
     <Button color={'primary'} onClick={() => setShow(true)}>
       Load
     </Button>
-  </div>
+  </>
 }

@@ -23,33 +23,30 @@ export const OgOverview = ({site}: OgOverviewProps) => {
 
   return <GridRow>
     <GridColumn colSpan={12}>
-      <Typography variant={'heading2'}>OpenGraph</Typography>
-    </GridColumn>
-    <GridColumn colSpan={12}>
       <List>
-        <ListItem color={'primary'}>
-          <Typography variant={'label'}>og:sitename</Typography>
-          <Typography>{result.ogSiteName}</Typography>
+        <ListItem>
+          <Typography color={'text.secondary'} variant={'label2'}>og:sitename</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{result.ogSiteName}</Typography>
         </ListItem>
 
-        <ListItem color={'primary'}>
-          <Typography variant={'label'}>og:description</Typography>
-          <Typography>{result.ogDescription}</Typography>
+        <ListItem>
+          <Typography color={'text.secondary'} variant={'label2'}>og:description</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{result.ogDescription}</Typography>
         </ListItem>
 
-        <ListItem color={'primary'}>
-          <Typography variant={'label'}>og:ogType</Typography>
-          <Typography>{result.ogType}</Typography>
+        <ListItem>
+          <Typography color={'text.primary'} variant={'label2'}>og:ogType</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{result.ogType}</Typography>
         </ListItem>
 
-        <ListItem color={'primary'}>
-          <Typography variant={'label'}>og:title</Typography>
-          <Typography>{result.ogTitle}</Typography>
+        <ListItem>
+          <Typography color={'text.primary'} variant={'label'}>og:title</Typography>
+          <Typography color={'text.primary'}>{result.ogTitle}</Typography>
         </ListItem>
 
-        <ListItem color={'primary'}>
-          <Typography variant={'label'}>og:image</Typography>
-          <img width={400} src={result.ogImage![0].url} alt={'og image'} />
+        <ListItem>
+          <Typography color={'text.primary'} variant={'label'}>og:image</Typography>
+          {result.ogImage?.[0] && <img width={400} src={result.ogImage![0].url} alt={'og image'} />}
         </ListItem>
       </List>
     </GridColumn>

@@ -1,0 +1,32 @@
+.root {
+    background: var(--surface--color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.root.outlined {
+    border: solid 1px var(--theme--colors--palettes--neutral--dark)
+}
+.root.square {
+    aspect-ratio: 1/1;
+}
+
+.root.fillHeight {
+    height: 100%;
+}
+
+.root.centeredContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    padding: var(--theme--spacing);
+}
+
+.header {
+    padding: var(--theme--spacing);
+    border-bottom: solid 1px var(--theme--colors--palettes--neutral--dark)
+}

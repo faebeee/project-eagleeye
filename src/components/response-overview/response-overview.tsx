@@ -13,20 +13,15 @@ export const ResponseOverview = ({site}: ResponseOverviewProps) => {
     }
   })
 
-
   if (data.isLoading) {
     return null
   }
 
-
   return <GridRow>
-    <GridColumn colSpan={12}>
-      <Typography variant={'heading2'}>Response Check</Typography>
-    </GridColumn>
     <GridColumn colSpan={12}>
       <List className={classes.list}>
         <ListItem>
-          {data.data?.status}
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.status}</Typography>
         </ListItem>
       </List>
     </GridColumn>

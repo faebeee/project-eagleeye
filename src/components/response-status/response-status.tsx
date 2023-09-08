@@ -19,9 +19,9 @@ export const ResponseStatus = ({site}: ResponseStatusProps) => {
 
   const color = useMemo((): ThemeColorVariables => {
     if (isValid) {
-      return 'signal.success.light'
+      return 'signal.success'
     }
-    return 'signal.error.light'
+    return 'signal.error'
 
   }, [ data.data ])
 
@@ -30,10 +30,9 @@ export const ResponseStatus = ({site}: ResponseStatusProps) => {
     </Avatar>
   }
 
-
   return <Avatar color={color} size={'small'}>
     {isValid ?
-      <CheckIcon />
+      <CheckIcon color={`${color}.contrast`} />
       :
       <CloseIcon />}
   </Avatar>

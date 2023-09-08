@@ -7,8 +7,6 @@ export const getOgData: NextApiHandler = async (req, res) => {
     throw new Error('Param not found')
   }
 
-  console.log(siteToScrape)
-
   const result = await getOpenGraphData(siteToScrape!)
   return res.send(result)
 }

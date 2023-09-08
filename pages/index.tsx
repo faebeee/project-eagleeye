@@ -1,4 +1,4 @@
-import { TextField } from '@dreipol/t3-ui'
+import { TextField, Typography } from '@dreipol/t3-ui'
 import { GridColumn, GridRow } from '@dreipol/t3-react-grid'
 import { useEffect, useState } from 'react'
 import { Layout } from '../src/components/layout/layout'
@@ -8,6 +8,9 @@ import { SitemapOverview } from '../src/components/sitemap-overview/sitemap-over
 import { ResponseOverview } from '../src/components/response-overview/response-overview'
 import { ShowOnRequest } from '../src/components/show-on-request/show-on-request'
 import { GetServerSideProps } from 'next'
+import { PageSpeedOverview } from '../src/components/page-speed-overview/page-speed-overview'
+import { Surface } from '../src/components/surface/surface'
+import { CssOverview } from '../src/components/css-overview/css-overview'
 
 export const getServerSideProps: GetServerSideProps = (req) => {
   const site = req.query.site as string ?? ''
@@ -48,20 +51,47 @@ export const MainPage = ({site}: MainPageProps) => {
               label={'URL'} placeholder={'https://example.com/my-path'} />
           </GridColumn>
         </GridRow>}>
-      <GridRow>
+      <GridRow
+        breakpoints={{
+        '(max-size:680px)':{columns: 4},
+        '(max-size:980px)':{columns: 8},
+      }}>
         <GridColumn colSpan={4}>
-          <OgOverview site={url} key={url} />
+          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>}>
+            <OgOverview site={url} key={url} />
+          </Surface>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <ShowOnRequest key={url}>
-            <SitemapOverview site={url} />
-          </ShowOnRequest>
+          <Surface color={'neutral.main'} outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>Response</Typography>}>
+            <ResponseOverview site={url} key={url} />
+          </Surface>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <ResponseOverview site={url} key={url} />
+          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>}>
+            <ShowOnRequest key={url}>
+              <SitemapOverview site={url} />
+            </ShowOnRequest>
+          </Surface>
         </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>}>
+            <ShowOnRequest key={url}>
+              <PageSpeedOverview site={url} />
+            </ShowOnRequest>
+          </Surface>
+        </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>}>
+            <ShowOnRequest key={url}>
+              <CssOverview site={url} />
+            </ShowOnRequest>
+          </Surface>
+        </GridColumn>
+
       </GridRow>
     </Layout>
   )
