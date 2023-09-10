@@ -25,7 +25,7 @@ export const SitemapOverview = ({site}: SitemapOverviewProps) => {
     <GridColumn colSpan={12}>
       <List className={classes.list}>
         {data.data?.map((s) => (<ListItem key={s} prefix={<ResponseStatus site={s} />}>
-          <Typography color={'text.primary'}>{s}</Typography>
+          <Typography color={'text.primary'} wrapText={false}>{s}</Typography>
         </ListItem>))}
       </List>
     </GridColumn>

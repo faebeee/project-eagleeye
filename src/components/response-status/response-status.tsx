@@ -8,8 +8,16 @@ export type ResponseStatusProps = {
 }
 export const ResponseStatus = ({site}: ResponseStatusProps) => {
   const data = useResource<{ status: number }>({
-    url: `/api/response`, params: {
+    url: `/api/response`,
+    params: {
       site: `${site}`
+    },
+    options: {
+      refreshInterval: 0,
+      errorRetryInterval: 0,
+      revalidateOnFocus:false,
+      shouldRetryOnError:false,
+      errorRetryCount: 0
     }
   })
 
@@ -30,7 +38,7 @@ export const ResponseStatus = ({site}: ResponseStatusProps) => {
     </Avatar>
   }
 
-  return <Avatar color={color as string} size={'small'}>
+  return <Avatar color={color as string} size={'small'} title={data.data?.status.toString()}>
     {isValid ?
       <CheckIcon color={`${color}.contrast`} />
       :
