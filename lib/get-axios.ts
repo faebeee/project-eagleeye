@@ -9,6 +9,5 @@ const instance = axios.create({
 })
 
 export const getAxios = () => {
-  console.log(process.env.API_TOKEN);
   return instance
 }
