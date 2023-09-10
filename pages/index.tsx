@@ -11,8 +11,9 @@ import { GetServerSideProps } from 'next'
 import { PageSpeedOverview } from '../src/components/page-speed-overview/page-speed-overview'
 import { Surface } from '../src/components/surface/surface'
 import { CssOverview } from '../src/components/css-overview/css-overview'
+import { Header } from '../src/components/header/header'
 
-export const getServerSideProps: GetServerSideProps<{site:string}> = async (req) => {
+export const getServerSideProps: GetServerSideProps<{ site: string }> = async (req) => {
   const site = req.query.site as string ?? ''
 
   return {
@@ -43,33 +44,35 @@ export const MainPage = ({site}: MainPageProps) => {
 
   return (<Layout
       header={
-        <GridRow>
-          <GridColumn colSpan={12}>
-            <TextField
-              value={url}
-              onChange={(val) => setUrl(val)}
-              label={'URL'} placeholder={'https://example.com/my-path'} />
-          </GridColumn>
-        </GridRow>}>
-      <GridRow
+        <Header>
+          <TextField
+            value={url}
+            onChange={(val) => setUrl(val)}
+            placeholder={'https://example.com/my-path'} />
+        </Header>
+      }>
+      {!!url && <GridRow
         breakpoints={{
-        '(max-size:680px)':{columns: 4},
-        '(max-size:980px)':{columns: 8},
-      }}>
+          '(max-size:680px)': {columns: 4},
+          '(max-size:980px)': {columns: 8}
+        }}>
         <GridColumn colSpan={4}>
-          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>}>
+          <Surface color={'neutral.main'} square outlined fillHeight
+            header={<Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>}>
             <OgOverview site={url} key={url} />
           </Surface>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Surface color={'neutral.main'} outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>Response</Typography>}>
+          <Surface color={'neutral.main'} outlined fillHeight
+            header={<Typography color={'text.primary'} variant={'heading2'}>Response</Typography>}>
             <ResponseOverview site={url} key={url} />
           </Surface>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>}>
+          <Surface color={'neutral.main'} square outlined fillHeight
+            header={<Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>}>
             <ShowOnRequest key={url}>
               <SitemapOverview site={url} />
             </ShowOnRequest>
@@ -77,7 +80,8 @@ export const MainPage = ({site}: MainPageProps) => {
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>}>
+          <Surface color={'neutral.main'} square outlined fillHeight
+            header={<Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>}>
             <ShowOnRequest key={url}>
               <PageSpeedOverview site={url} />
             </ShowOnRequest>
@@ -85,14 +89,15 @@ export const MainPage = ({site}: MainPageProps) => {
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Surface color={'neutral.main'} square outlined fillHeight header={<Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>}>
+          <Surface color={'neutral.main'} square outlined fillHeight
+            header={<Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>}>
             <ShowOnRequest key={url}>
               <CssOverview site={url} />
             </ShowOnRequest>
           </Surface>
         </GridColumn>
 
-      </GridRow>
+      </GridRow>}
     </Layout>
   )
 }

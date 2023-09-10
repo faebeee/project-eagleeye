@@ -10,7 +10,7 @@ export type CssOverviewProps = {
 
 export const CssOverview = ({site}: CssOverviewProps) => {
   const data = useResource<CssSpecResult>({
-    url: `/api/css-spec`, params: {
+    url: `http://127.0.0.1:4000/css-spec`, params: {
       site
     }
   })

@@ -1,7 +1,7 @@
 .root {
     background: var(--surface--color);
     border-radius: 8px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .root.outlined {
@@ -27,6 +27,9 @@
 }
 
 .header {
+    position: sticky;
+    background: var(--surface--color);
+    top:0;
     padding: var(--theme--spacing);
     border-bottom: solid 1px var(--theme--colors--palettes--neutral--dark)
 }
