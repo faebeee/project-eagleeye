@@ -20,8 +20,8 @@ const categories = [
 ]
 
 export const PageSpeedOverview = ({site}: PageSpeedOverviewProps) => {
-  const data = useResource<Record<'performance', Category>>({
-    url: `http://127.0.0.1:4000/pagespeed`, params: {
+  const data = useResource<any>({
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/pagespeed`, params: {
       site
     }
   })

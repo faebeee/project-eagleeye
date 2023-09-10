@@ -2,15 +2,14 @@ import { useResource } from '@dreipol/t3-api-utils'
 import { useMemo } from 'react'
 import { GridColumn, GridRow } from '@dreipol/t3-react-grid'
 import { ActionsWrapper, ContextChip, List, ListItem, Typography } from '@dreipol/t3-ui'
-import { CssSpecResult } from '../../../lib/css-spec/types'
 
 export type CssOverviewProps = {
   site: string
 }
 
 export const CssOverview = ({site}: CssOverviewProps) => {
-  const data = useResource<CssSpecResult>({
-    url: `http://127.0.0.1:4000/css-spec`, params: {
+  const data = useResource<any>({
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/css-spec`, params: {
       site
     }
   })

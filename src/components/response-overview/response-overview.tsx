@@ -8,7 +8,7 @@ export type ResponseOverviewProps = {
 }
 export const ResponseOverview = ({site}: ResponseOverviewProps) => {
   const data = useResource<{ status: number }>({
-    url: `/api/response-check`, params: {
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/response`, params: {
       site: `${site}`
     }
   })

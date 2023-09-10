@@ -9,7 +9,7 @@ export type SitemapOverviewProps = {
 }
 export const SitemapOverview = ({site}: SitemapOverviewProps) => {
   const data = useResource<string[]>({
-    url: `http://127.0.0.1:4000/sitemap`, params: {
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/sitemap`, params: {
       site: `${site}/sitemap.xml`
     }
   })
