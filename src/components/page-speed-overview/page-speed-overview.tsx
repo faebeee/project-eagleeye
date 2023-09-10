@@ -21,7 +21,7 @@ const categories = [
 
 export const PageSpeedOverview = ({site}: PageSpeedOverviewProps) => {
   const data = useResource<any>({
-    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/pagespeed`, params: {
+    url: `/api/pagespeed`, params: {
       site
     }
   })

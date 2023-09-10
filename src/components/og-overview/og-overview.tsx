@@ -10,7 +10,7 @@ export type OgOverviewProps = {
 
 export const OgOverview = ({site}: OgOverviewProps) => {
   const data = useResource<OgObject>({
-    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/og-scrap`, params: {
+    url: `/api/og-scrap`, params: {
       site
     }
   })

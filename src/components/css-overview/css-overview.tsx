@@ -9,7 +9,7 @@ export type CssOverviewProps = {
 
 export const CssOverview = ({site}: CssOverviewProps) => {
   const data = useResource<any>({
-    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/css-spec`, params: {
+    url: `/api/css-spec`, params: {
       site
     }
   })
