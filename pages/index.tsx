@@ -1,4 +1,4 @@
-import { TextField, Typography } from '@dreipol/t3-ui'
+import { ContextChip, TextField, Typography } from '@dreipol/t3-ui'
 import { GridColumn, GridRow } from '@dreipol/t3-react-grid'
 import { useEffect, useState } from 'react'
 import { Layout } from '../src/components/layout/layout'
@@ -12,6 +12,8 @@ import { PageSpeedOverview } from '../src/components/page-speed-overview/page-sp
 import { Surface } from '../src/components/surface/surface'
 import { CssOverview } from '../src/components/css-overview/css-overview'
 import { Header } from '../src/components/header/header'
+import { MicrodataOverview } from '../src/components/microdata-overview/microdata-overview'
+import { WhoisOverview } from '../src/components/domain/whois-overview'
 
 export const getServerSideProps: GetServerSideProps<{ site: string }> = async (req) => {
   const site = req.query.site as string ?? ''
@@ -58,7 +60,7 @@ export const MainPage = ({site}: MainPageProps) => {
         }}>
         <GridColumn colSpan={4}>
           <Surface color={'neutral.main'} square outlined fillHeight
-            header={<Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>}>
+            header={<><Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography><ContextChip color={'secondary'} label={'SEO'}/></>}>
             <OgOverview site={url} key={url} />
           </Surface>
         </GridColumn>
@@ -72,7 +74,7 @@ export const MainPage = ({site}: MainPageProps) => {
 
         <GridColumn colSpan={4}>
           <Surface color={'neutral.main'} square outlined fillHeight
-            header={<Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>}>
+            header={<><Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography><ContextChip color={'secondary'} label={'SEO'}/></>}>
             <ShowOnRequest key={url}>
               <SitemapOverview site={url} />
             </ShowOnRequest>
@@ -90,9 +92,27 @@ export const MainPage = ({site}: MainPageProps) => {
 
         <GridColumn colSpan={4}>
           <Surface color={'neutral.main'} square outlined fillHeight
+            header={<><Typography color={'text.primary'} variant={'heading2'}>Microdata</Typography><ContextChip color={'secondary'} label={'SEO'}/></>}>
+            <ShowOnRequest key={url}>
+              <MicrodataOverview site={url} />
+            </ShowOnRequest>
+          </Surface>
+        </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Surface color={'neutral.main'} square outlined fillHeight
             header={<Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>}>
             <ShowOnRequest key={url}>
               <CssOverview site={url} />
+            </ShowOnRequest>
+          </Surface>
+        </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Surface color={'neutral.main'} square outlined fillHeight
+            header={<Typography color={'text.primary'} variant={'heading2'}>Whois</Typography>}>
+            <ShowOnRequest key={url}>
+              <WhoisOverview site={url} />
             </ShowOnRequest>
           </Surface>
         </GridColumn>

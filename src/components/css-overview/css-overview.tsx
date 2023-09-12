@@ -47,11 +47,11 @@ export const CssOverview = ({site}: CssOverviewProps) => {
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>Specificity</Typography>
           <ActionsWrapper>
-            <ContextChip color={'primary'} label={<>
+            <ContextChip color={'secondary'} label={<>
               avg: {Math.round(data.data?.selectors.specificity.average ?? 0)}
             </>}></ContextChip>
 
-            <ContextChip color={'primary'}  label={<>
+            <ContextChip color={'secondary'}  label={<>
               max: {data.data?.selectors.specificity.max}
             </>}></ContextChip>
           </ActionsWrapper>

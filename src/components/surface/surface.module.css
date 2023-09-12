@@ -8,6 +8,7 @@
 .root.outlined {
     border: solid 1px var(--theme--colors--palettes--neutral--dark)
 }
+
 .root.square {
     aspect-ratio: 1/1;
 }
@@ -29,8 +30,12 @@
 
 .header {
     position: sticky;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     background: var(--surface--color);
-    top:0;
+    top: 0;
     padding: var(--theme--spacing);
     border-bottom: solid 1px var(--theme--colors--palettes--neutral--dark)
 }

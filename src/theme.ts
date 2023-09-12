@@ -19,12 +19,21 @@ export const theme:ThemeBuildConfig = {
       //   contrast: '#000000'
       // },
 
+
       primary: {
-        main: '#2B86A1',
-        dark: '#206479',
-        light: '#35A7CA',
-        veryLight: '#CFEAF2',
-        superLight: '#EFF8FB',
+        main: '#262626',
+        dark: '#0D0D0D',
+        light: '#404040',
+        veryLight: '#E6E6E6',
+        superLight: '#F5F5F5',
+        contrast: '#FFFFFF'
+      },
+      secondary: {
+        main: '#1D8C73',
+        dark: '#14614F',
+        light: '#25B795',
+        veryLight: '#CCF5EB',
+        superLight: '#EEFBF8',
         contrast: '#FFFFFF'
       }
     }

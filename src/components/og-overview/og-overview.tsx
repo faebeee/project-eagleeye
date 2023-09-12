@@ -35,17 +35,17 @@ export const OgOverview = ({site}: OgOverviewProps) => {
         </ListItem>
 
         <ListItem>
-          <Typography color={'text.primary'} variant={'label2'}>og:ogType</Typography>
+          <Typography color={'text.secondary'} variant={'label2'}>og:ogType</Typography>
           <Typography color={'text.primary'} variant={'label'}>{result.ogType}</Typography>
         </ListItem>
 
         <ListItem>
-          <Typography color={'text.primary'} variant={'label'}>og:title</Typography>
-          <Typography color={'text.primary'}>{result.ogTitle}</Typography>
+          <Typography color={'text.secondary'} variant={'label2'}>og:title</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{result.ogTitle}</Typography>
         </ListItem>
 
         <ListItem>
-          <Typography color={'text.primary'} variant={'label'}>og:image</Typography>
+          <Typography color={'text.secondary'} variant={'label2'}>og:image</Typography>
           {result.ogImage?.[0] && <img width={400} src={result.ogImage![0].url} alt={'og image'} />}
         </ListItem>
       </List>
