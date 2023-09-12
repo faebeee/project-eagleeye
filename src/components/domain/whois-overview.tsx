@@ -16,7 +16,7 @@ export const WhoisOverview = ({site}: WhoisOverviewProps) => {
 
   return <GridRow>
     <GridColumn colSpan={12}>
-      <Typography><span dangerouslySetInnerHTML={{__html: data.data?.whois.replaceAll('\n', '<br/>')}}></span>
+      <Typography><span dangerouslySetInnerHTML={{__html: data.data?.whois.replaceAll('\n', '<br/>') ?? ''}}></span>
       </Typography>
     </GridColumn>
   </GridRow>
