@@ -2,7 +2,6 @@ import { useResource } from '@dreipol/t3-api-utils'
 import { GridColumn, GridRow } from '@dreipol/t3-react-grid'
 import { List, ListItem, Typography } from '@dreipol/t3-ui'
 import classes from './sitemap-overview.module.css'
-import { ResponseStatus } from '../response-status/response-status'
 
 export type SitemapOverviewProps = {
   site: string
@@ -19,11 +18,13 @@ export const SitemapOverview = ({site}: SitemapOverviewProps) => {
   }
 
   return <GridRow>
-    <GridColumn colSpan={12}>
+    {!!data.data?.length && <GridColumn colSpan={12}>
       <Typography color={'text.primary'}>Found {data.data?.length ?? 0} Sites</Typography>
-    </GridColumn>
+    </GridColumn>}
     <GridColumn colSpan={12}>
       <List className={classes.list}>
+        {!data.data?.length && <ListItem><Typography color={'signal.error'}>No sitemap found</Typography></ListItem>}
+
         {data.data?.map((s) => (<ListItem key={s}>
           <Typography color={'text.primary'} wrapText={false}>{s}</Typography>
         </ListItem>))}

@@ -10,16 +10,25 @@ export type OgOverviewProps = {
 
 export const OgOverview = ({site}: OgOverviewProps) => {
   const data = useResource<OgObject>({
-    url: `/api/og-scrap`, params: {
+    url: `/api/og-scrap`,
+    params: {
       site
+    },
+    options: {
+      shouldRetryOnError:false
     }
   })
 
   const result = useMemo(() => data.data, [ data ])
 
   if (data.isLoading || !result) {
-    return null
+    return <Typography>Loading...</Typography>
   }
+
+  if (data.error) {
+    return <Typography color={'signal.error.main'}>{data.error}</Typography>
+  }
+
 
   return <GridRow>
     <GridColumn colSpan={12}>

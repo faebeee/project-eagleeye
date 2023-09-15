@@ -1,5 +1,5 @@
 import { PropsWithChildren, useState } from 'react'
-import { Button } from '@dreipol/t3-ui'
+import { ActionsWrapper, Button } from '@dreipol/t3-ui'
 
 export type ShowOnRequestProps = PropsWithChildren<{
   showInitial?: boolean;
@@ -11,9 +11,9 @@ export const ShowOnRequest = ({showInitial = false, children}: ShowOnRequestProp
     return <>{children}</>
   }
 
-  return <>
+  return <ActionsWrapper fullWidth center>
     <Button color={'primary'} onClick={() => setShow(true)}>
       Load
     </Button>
-  </>
+  </ActionsWrapper>
 }

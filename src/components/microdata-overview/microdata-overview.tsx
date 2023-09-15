@@ -16,6 +16,8 @@ export const MicrodataOverview = ({site}: MicrodataOverviewProps) => {
   return <GridRow>
     <GridColumn colSpan={12}>
 
+      {!data.data?.length  && <Typography>No Microdata found</Typography>}
+
       {data.data?.map((entry) => (<List key={entry.id}>
         <ListItem color={'secondary'}>
           <Typography variant={'button'}>{entry.name}</Typography>

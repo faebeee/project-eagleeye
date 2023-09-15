@@ -1,7 +1,6 @@
 import { useResource } from '@dreipol/t3-api-utils'
 import { GridColumn, GridRow } from '@dreipol/t3-react-grid'
 import { ContextChip, List, ListItem, Typography } from '@dreipol/t3-ui'
-import { Category } from 'psi'
 
 export type PageSpeedOverviewProps = {
   site: string
@@ -21,12 +20,21 @@ const categories = [
 
 export const PageSpeedOverview = ({site}: PageSpeedOverviewProps) => {
   const data = useResource<any>({
-    url: `/api/pagespeed`, params: {
+    url: `/api/pagespeed`,
+    params: {
       site
+    },
+    options: {
+      shouldRetryOnError: false
     }
   })
+
   if (data.isLoading || !data) {
     return <Typography>Loading...</Typography>
+  }
+
+  if (data.error) {
+    return <Typography color={'signal.error.main'}>{data.error}</Typography>
   }
 
   return <GridRow>
@@ -34,7 +42,8 @@ export const PageSpeedOverview = ({site}: PageSpeedOverviewProps) => {
       <List>
         <ListItem>
           <div>
-            <ContextChip color={'primary'} label={`Score: ${Math.round(data.data?.categories.performance.score * 100)}`} />
+            <ContextChip color={'secondary'}
+              label={`Score: ${Math.round(data.data?.categories.performance.score * 100)}`} />
           </div>
         </ListItem>
         {categories.map((cat) => (
