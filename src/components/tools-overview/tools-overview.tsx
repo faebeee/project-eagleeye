@@ -19,7 +19,7 @@ export const ToolsOverview = ({site}: ToolsOverviewProps) => {
   if (data.isLoading || !data.data) {
     return <Typography color={'text.secondary'}>Loading...</Typography>
   }
-  
+
   if (data.error) {
     return <Typography color={'signal.error.main'}>Failed...</Typography>
   }

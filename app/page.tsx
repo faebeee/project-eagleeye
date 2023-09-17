@@ -181,18 +181,6 @@ export default function MainPage() {
             </CardContent>
           </Card>
         </GridColumn>
-
-        <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
-            <CardHeader divider suffix={<FilterChip
-              color={'primary'} label={'TECH'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Technologies</Typography>
-            </CardHeader>
-            <CardContent scrollable style={{maxHeight: '600px'}} noHorizontalPadding>
-              <ToolsOverview site={url} />
-            </CardContent>
-          </Card>
-        </GridColumn>
       </GridRow>}
     </Layout>
   )

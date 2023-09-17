@@ -6,5 +6,7 @@ export async function GET(request: Request) {
   const site = searchParams.get('site')!
 
   const resp = await getFromBackend('/response', {site})
-  return NextResponse.json(resp.data)
+  const res = NextResponse.json(resp.data)
+  res.headers.set('Cache-Control', 'public, s-maxage=300')
+  return res
 }
