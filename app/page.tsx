@@ -27,6 +27,7 @@ import { WhoisOverview } from '../src/components/domain/whois-overview'
 import { LoadOverview } from '../src/components/load-overview/load-overview'
 import { HtmlValidOverview } from '../src/components/html-valid-overview/html-valid-overview'
 import { ToolsOverview } from '../src/components/tools-overview/tools-overview'
+import { BackendStatusOverview } from '../src/components/backend-status-overview/backend-status-overview'
 
 export type MainPageProps = {
   site: string
@@ -182,6 +183,8 @@ export default function MainPage() {
           </Card>
         </GridColumn>
       </GridRow>}
+
+      <BackendStatusOverview/>
     </Layout>
   )
 }
