@@ -149,18 +149,6 @@ export default function MainPage() {
           <Card outlined elevated style={{height: '600px'}}>
             <CardHeader divider suffix={<FilterChip
               color={'primary'} label={'TECH'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Whois</Typography>
-            </CardHeader>
-            <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
-              <WhoisOverview site={url} />
-            </CardContent>
-          </Card>
-        </GridColumn>
-
-        <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
-            <CardHeader divider suffix={<FilterChip
-              color={'primary'} label={'TECH'} />}>
               <Typography color={'text.primary'} variant={'heading2'}>Load</Typography>
             </CardHeader>
             <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
