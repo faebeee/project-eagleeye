@@ -19,7 +19,7 @@ const categories = [
 ]
 
 export const PageSpeedOverview = ({site}: PageSpeedOverviewProps) => {
-  const data = useResource<any>({
+  const data = useResource<{ status: 'loading' | 'loaded', result: any }>({
     url: `/api/pagespeed`,
     params: {
       site
@@ -37,20 +37,25 @@ export const PageSpeedOverview = ({site}: PageSpeedOverviewProps) => {
     return <Typography color={'signal.error.main'}>{data.error}</Typography>
   }
 
+  if (data.data?.status === 'loading') {
+    return <Typography>Generating...</Typography>
+  }
+
   return <GridRow>
     <GridColumn colSpan={12}>
       <List>
         <ListItem>
           <div>
             <ContextChip color={'secondary'}
-              label={`Score: ${Math.round(data.data?.categories.performance.score * 100)}`} />
+              label={`Score: ${Math.round(data.data?.result.categories.performance.score * 100)}`} />
           </div>
         </ListItem>
         {categories.map((cat) => (
           <ListItem key={cat.key}>
             {/* @ts-ignore*/}
             <Typography color={'text.primary'} variant={'label2'}>{cat.label}</Typography>
-            <Typography color={'text.primary'} variant={'label'}>{data.data?.audits[cat.key].displayValue}</Typography>
+            <Typography color={'text.primary'}
+              variant={'label'}>{data.data?.result.audits[cat.key].displayValue}</Typography>
           </ListItem>
         ))}
       </List>

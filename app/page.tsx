@@ -23,10 +23,8 @@ import { PageSpeedOverview } from '../src/components/page-speed-overview/page-sp
 import { CssOverview } from '../src/components/css-overview/css-overview'
 import { Header } from '../src/components/header/header'
 import { MicrodataOverview } from '../src/components/microdata-overview/microdata-overview'
-import { WhoisOverview } from '../src/components/domain/whois-overview'
 import { LoadOverview } from '../src/components/load-overview/load-overview'
 import { HtmlValidOverview } from '../src/components/html-valid-overview/html-valid-overview'
-import { ToolsOverview } from '../src/components/tools-overview/tools-overview'
 import { BackendStatusOverview } from '../src/components/backend-status-overview/backend-status-overview'
 
 export type MainPageProps = {
@@ -114,9 +112,7 @@ export default function MainPage() {
               <Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>
             </CardHeader>
             <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
-              <ShowOnRequest key={url}>
-                <PageSpeedOverview site={url} />
-              </ShowOnRequest>
+              <PageSpeedOverview site={url} />
             </CardContent>
           </Card>
         </GridColumn>
@@ -172,7 +168,7 @@ export default function MainPage() {
         </GridColumn>
       </GridRow>}
 
-      <BackendStatusOverview/>
+      <BackendStatusOverview />
     </Layout>
   )
 }
