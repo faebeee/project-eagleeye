@@ -9,16 +9,18 @@ export type LoadOverviewProps = {
 
 export const LoadOverview = ({site}: LoadOverviewProps) => {
   const data = useResource<{
-    maxRequests: number,
-    maxSeconds: number,
-    concurrency: number,
-    elapsedSeconds: number,
-    totalRequests: number,
-    totalErrors: number,
-    totalTimeSeconds: number,
-    maxLatencyMs: number,
-    meanLatencyMs: number,
-    minLatencyMs: number,
+    status: 'loading' | 'loaded', result: {
+      maxRequests: number,
+      maxSeconds: number,
+      concurrency: number,
+      elapsedSeconds: number,
+      totalRequests: number,
+      totalErrors: number,
+      totalTimeSeconds: number,
+      maxLatencyMs: number,
+      meanLatencyMs: number,
+      minLatencyMs: number,
+    }|null
   }>({
     url: `/api/load`,
     params: {
@@ -28,7 +30,7 @@ export const LoadOverview = ({site}: LoadOverviewProps) => {
       shouldRetryOnError: false
     }
   })
-  if (data.isLoading || !data) {
+  if (data.isLoading || !data || data.data?.status==='loading') {
     return <Typography>Loading...</Typography>
   }
 
@@ -41,40 +43,40 @@ export const LoadOverview = ({site}: LoadOverviewProps) => {
       <List>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>maxRequests</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.maxRequests}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.maxRequests}</Typography>
         </ListItem>
 
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>maxSeconds</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.maxSeconds}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.maxSeconds}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>elapsedSeconds</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.elapsedSeconds}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.elapsedSeconds}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>totalRequests</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.totalRequests}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.totalRequests}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>totalErrors</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.totalErrors}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.totalErrors}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>totalTimeSeconds</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.totalTimeSeconds}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.totalTimeSeconds}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>maxLatencyMs</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.maxLatencyMs}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.maxLatencyMs}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>meanLatencyMs</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.meanLatencyMs}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.meanLatencyMs}</Typography>
         </ListItem>
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>minLatencyMs</Typography>
-          <Typography color={'text.primary'} variant={'label'}>{data.data?.minLatencyMs}</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.result?.minLatencyMs}</Typography>
         </ListItem>
       </List>
     </GridColumn>
