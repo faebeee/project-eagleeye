@@ -54,11 +54,11 @@ export default function MainPage() {
   return (<Layout
       header={
         <Header>
-          <form style={{width: '100%'}} onSubmit={(e) => {
+          <form style={{ width: '100%' }} onSubmit={(e) => {
             e.preventDefault()
             onGoClicked()
           }}>
-            <ActionsWrapper fullWidth style={{width: '100%'}}>
+            <ActionsWrapper fullWidth style={{ width: '100%' }} center>
               <TextField
                 value={internalUrl}
                 onChange={(val) => setInternalUrl(val)}
@@ -70,84 +70,110 @@ export default function MainPage() {
       }>
       {!!url && <GridRow>
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'secondary'} label={'SEO'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Showing the OpenGraph data configured in
+                  the <code>meta</code> elements of the page</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent scrollable style={{maxHeight: '600px'}} noHorizontalPadding>
+            <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>
               <OgOverview site={url} key={url} />
             </CardContent>
           </Card>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'primary'} label={'TECH'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Response</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>Response</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>HTTP statuscode of the initial server
+                  response</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent scrollable style={{maxHeight: '600px'}} noHorizontalPadding>
+            <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>
               <ResponseOverview site={url} key={url} />
             </CardContent>
           </Card>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'secondary'} label={'SEO'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Content of the sitemap.xml of the crawled
+                  page</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent scrollable style={{maxHeight: '600px'}}>
+            <CardContent scrollable style={{ maxHeight: '600px' }}>
               <SitemapOverview site={url} />
             </CardContent>
           </Card>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'primary'} label={'TECH'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Google's page speed insight results running
+                  lighthouse in the background</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
+            <CardContent noHorizontalPadding scrollable style={{ maxHeight: '600px' }}>
               <PageSpeedOverview site={url} />
             </CardContent>
           </Card>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'secondary'} label={'SEO'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Microdata</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>Microdata</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Microdata crawled from the HTML response of the webpage</Typography>
+              </ActionsWrapper>
+
             </CardHeader>
-            <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
+            <CardContent noHorizontalPadding scrollable style={{ maxHeight: '600px' }}>
               <MicrodataOverview site={url} />
             </CardContent>
           </Card>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'primary'} label={'TECH'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>CSS stats about specificity and size</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
+            <CardContent noHorizontalPadding scrollable style={{ maxHeight: '600px' }}>
               <CssOverview site={url} />
             </CardContent>
           </Card>
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'primary'} label={'TECH'} />}>
-              <Typography color={'text.primary'} variant={'heading2'}>Load</Typography>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>Load</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Load testing starting 500 requests against the server and gets the avg times</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent noHorizontalPadding scrollable style={{maxHeight: '600px'}}>
+            <CardContent noHorizontalPadding scrollable style={{ maxHeight: '600px' }}>
               <ShowOnRequest key={url}>
                 <LoadOverview site={url} />
               </ShowOnRequest>
@@ -156,12 +182,15 @@ export default function MainPage() {
         </GridColumn>
 
         <GridColumn colSpan={4}>
-          <Card outlined elevated style={{height: '600px'}}>
+          <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
               color={'secondary'} label={'SEO'} />}>
+              <ActionsWrapper direction={'column'}>
               <Typography color={'text.primary'} variant={'heading2'}>HTML Validator</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>HTML validator errors and warning for the crawled HTML</Typography>
+              </ActionsWrapper>
             </CardHeader>
-            <CardContent scrollable style={{maxHeight: '600px'}} noHorizontalPadding>
+            <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>
               <HtmlValidOverview site={url} />
             </CardContent>
           </Card>
