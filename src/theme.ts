@@ -27,6 +27,9 @@ export const theme:ThemeBuildConfig = {
     },
     heading2: {
       size: '36px'
+    },
+    value: {
+      size: '32px'
     }
   }
 }

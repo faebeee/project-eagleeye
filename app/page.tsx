@@ -26,6 +26,7 @@ import { MicrodataOverview } from '../src/components/microdata-overview/microdat
 import { LoadOverview } from '../src/components/load-overview/load-overview'
 import { HtmlValidOverview } from '../src/components/html-valid-overview/html-valid-overview'
 import { BackendStatusOverview } from '../src/components/backend-status-overview/backend-status-overview'
+import { PageSizeOverview } from '../src/components/page-size-overview/page-size-overview'
 
 export type MainPageProps = {
   site: string
@@ -72,7 +73,7 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'secondary'} label={'SEO'} />}>
+              color={'secondary'}>SEO</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>OpenGraph</Typography>
                 <Typography color={'text.secondary'} variant={'caption'}>Showing the OpenGraph data configured in
@@ -88,7 +89,7 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'primary'} label={'TECH'} />}>
+              color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Response</Typography>
                 <Typography color={'text.secondary'} variant={'caption'}>HTTP statuscode of the initial server
@@ -104,7 +105,7 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'secondary'} label={'SEO'} />}>
+              color={'secondary'}>SEO</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Sitemap</Typography>
                 <Typography color={'text.secondary'} variant={'caption'}>Content of the sitemap.xml of the crawled
@@ -120,7 +121,22 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'primary'} label={'TECH'} />}>
+              color={'primary'}>TECH</FilterChip>}>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>Page Weight</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Google's page speed insight size</Typography>
+              </ActionsWrapper>
+            </CardHeader>
+            <CardContent scrollable style={{ maxHeight: '600px' }}>
+              <PageSizeOverview site={url} />
+            </CardContent>
+          </Card>
+        </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Card outlined elevated style={{ height: '600px' }}>
+            <CardHeader divider suffix={<FilterChip
+              color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>
                 <Typography color={'text.secondary'} variant={'caption'}>Google's page speed insight results running
@@ -136,10 +152,11 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'secondary'} label={'SEO'} />}>
+              color={'secondary'}>SEO</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Microdata</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>Microdata crawled from the HTML response of the webpage</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Microdata crawled from the HTML response of the
+                  webpage</Typography>
               </ActionsWrapper>
 
             </CardHeader>
@@ -152,10 +169,11 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'primary'} label={'TECH'} />}>
+              color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>CSSStats</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>CSS stats about specificity and size</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>CSS stats about specificity and
+                  size</Typography>
               </ActionsWrapper>
             </CardHeader>
             <CardContent noHorizontalPadding scrollable style={{ maxHeight: '600px' }}>
@@ -167,10 +185,11 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'primary'} label={'TECH'} />}>
+              color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Load</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>Load testing starting 500 requests against the server and gets the avg times</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Load testing starting 500 requests against the
+                  server and gets the avg times</Typography>
               </ActionsWrapper>
             </CardHeader>
             <CardContent noHorizontalPadding scrollable style={{ maxHeight: '600px' }}>
@@ -184,10 +203,11 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
-              color={'secondary'} label={'SEO'} />}>
+              color={'secondary'}>SEO</FilterChip>}>
               <ActionsWrapper direction={'column'}>
-              <Typography color={'text.primary'} variant={'heading2'}>HTML Validator</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>HTML validator errors and warning for the crawled HTML</Typography>
+                <Typography color={'text.primary'} variant={'heading2'}>HTML Validator</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>HTML validator errors and warning for the
+                  crawled HTML</Typography>
               </ActionsWrapper>
             </CardHeader>
             <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>

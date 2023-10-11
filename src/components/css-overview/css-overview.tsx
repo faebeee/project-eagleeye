@@ -7,7 +7,7 @@ export type CssOverviewProps = {
   site: string
 }
 
-export const CssOverview = ({site}: CssOverviewProps) => {
+export const CssOverview = ({ site }: CssOverviewProps) => {
   const data = useResource<any>({
     url: `/api/css-spec`, params: {
       site
@@ -47,13 +47,13 @@ export const CssOverview = ({site}: CssOverviewProps) => {
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>Specificity</Typography>
           <ActionsWrapper>
-            <ContextChip color={'secondary'} label={<>
+            <ContextChip color={'secondary'}>
               avg: {Math.round(data.data?.selectors.specificity.average ?? 0)}
-            </>}></ContextChip>
+            </ContextChip>
 
-            <ContextChip color={'secondary'}  label={<>
+            <ContextChip color={'secondary'}>
               max: {data.data?.selectors.specificity.max}
-            </>}></ContextChip>
+            </ContextChip>
           </ActionsWrapper>
         </ListItem>
       </List>
