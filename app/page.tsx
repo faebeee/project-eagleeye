@@ -27,6 +27,7 @@ import { LoadOverview } from '../src/components/load-overview/load-overview'
 import { HtmlValidOverview } from '../src/components/html-valid-overview/html-valid-overview'
 import { BackendStatusOverview } from '../src/components/backend-status-overview/backend-status-overview'
 import { PageSizeOverview } from '../src/components/page-size-overview/page-size-overview'
+import { SeoOverview } from '../src/components/seo/seo-overview'
 
 export type MainPageProps = {
   site: string
@@ -121,10 +122,26 @@ export default function MainPage() {
         <GridColumn colSpan={4}>
           <Card outlined elevated style={{ height: '600px' }}>
             <CardHeader divider suffix={<FilterChip
+              color={'secondary'}>SEO</FilterChip>}>
+              <ActionsWrapper direction={'column'}>
+                <Typography color={'text.primary'} variant={'heading2'}>SEO</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}></Typography>
+              </ActionsWrapper>
+            </CardHeader>
+            <CardContent scrollable style={{ maxHeight: '600px' }}>
+              <SeoOverview site={url} />
+            </CardContent>
+          </Card>
+        </GridColumn>
+
+        <GridColumn colSpan={4}>
+          <Card outlined elevated style={{ height: '600px' }}>
+            <CardHeader divider suffix={<FilterChip
               color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Page Weight</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight size</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight
+                  size</Typography>
               </ActionsWrapper>
             </CardHeader>
             <CardContent scrollable style={{ maxHeight: '600px' }}>
@@ -139,7 +156,8 @@ export default function MainPage() {
               color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight results running
+                <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight results
+                  running
                   lighthouse in the background</Typography>
               </ActionsWrapper>
             </CardHeader>
