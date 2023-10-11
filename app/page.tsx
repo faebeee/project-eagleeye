@@ -124,7 +124,7 @@ export default function MainPage() {
               color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Page Weight</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>Google's page speed insight size</Typography>
+                <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight size</Typography>
               </ActionsWrapper>
             </CardHeader>
             <CardContent scrollable style={{ maxHeight: '600px' }}>
@@ -139,7 +139,7 @@ export default function MainPage() {
               color={'primary'}>TECH</FilterChip>}>
               <ActionsWrapper direction={'column'}>
                 <Typography color={'text.primary'} variant={'heading2'}>Pagespeed</Typography>
-                <Typography color={'text.secondary'} variant={'caption'}>Google's page speed insight results running
+                <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight results running
                   lighthouse in the background</Typography>
               </ActionsWrapper>
             </CardHeader>
