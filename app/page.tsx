@@ -30,7 +30,7 @@ import { PageSizeOverview } from '../src/components/page-size-overview/page-size
 import { SeoOverview } from '../src/components/seo/seo-overview'
 import { ExternalToolsOverview } from '../src/components/external-tools/external-tools-overview'
 import { CssQualityOverview } from '../src/components/css/css-quality'
-import classes from './page.scss'
+import classes from './page.module.scss'
 
 export type MainPageProps = {
   site: string
