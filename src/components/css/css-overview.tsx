@@ -31,6 +31,7 @@ export const CssOverview = ({ site }: CssOverviewProps) => {
           <Typography color={'text.secondary'} variant={'label2'}>Size</Typography>
           <Typography color={'text.primary'} variant={'label'}>{data.data?.humanizedSize}</Typography>
         </ListItem>
+
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>GZip Size</Typography>
           <Typography color={'text.primary'} variant={'label'}>{data.data?.humanizedGzipSize}</Typography>
@@ -40,10 +41,22 @@ export const CssOverview = ({ site }: CssOverviewProps) => {
           <Typography color={'text.secondary'} variant={'label2'}>MediaQueries</Typography>
           <Typography color={'text.primary'} variant={'label'}>{data.data?.mediaQueries.total}</Typography>
         </ListItem>
+
+        <ListItem>
+          <Typography color={'text.secondary'} variant={'label2'}>Selectors</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.selectors.total}</Typography>
+        </ListItem>
+
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>Rules</Typography>
           <Typography color={'text.primary'} variant={'label'}>{data.data?.rules.total}</Typography>
         </ListItem>
+
+        <ListItem>
+          <Typography color={'text.secondary'} variant={'label2'}>Declarations</Typography>
+          <Typography color={'text.primary'} variant={'label'}>{data.data?.declarations.total}</Typography>
+        </ListItem>
+
         <ListItem>
           <Typography color={'text.secondary'} variant={'label2'}>Specificity</Typography>
           <ActionsWrapper>

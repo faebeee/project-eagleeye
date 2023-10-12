@@ -7,6 +7,6 @@ export async function GET(request: Request) {
 
   const resp = await getFromBackend('/css-spec', {site})
   const res = NextResponse.json(resp.data)
-  res.headers.set('Cache-Control', 'public, s-maxage=300')
+  res.headers.set('Cache-Control', 'private, s-maxage=300')
   return res
 }

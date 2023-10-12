@@ -23,6 +23,7 @@ export const theme:ThemeBuildConfig = {
   },
   font: {
     heading1: {
+      family: 'Blanka',
       size: '86px'
     },
     heading2: {
@@ -30,6 +31,9 @@ export const theme:ThemeBuildConfig = {
     },
     value: {
       size: '32px'
+    },
+    listTitle: {
+      size: '24px'
     }
   }
 }

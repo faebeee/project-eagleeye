@@ -9,7 +9,7 @@ export const Header = ({children}: HeaderProps) => {
   return <GridRow className={classes.root}>
     <GridColumn colSpan={12}>
       <div className={classes.content}>
-        <Typography variant={'heading1'} className={classes.title}>Eagle Eye</Typography>
+        <Typography variant={'heading1'} className={classes.title}>Eagleeye</Typography>
         {children}
       </div>
     </GridColumn>

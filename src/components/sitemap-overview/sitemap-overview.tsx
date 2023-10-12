@@ -4,9 +4,10 @@ import { List, ListItem, Typography } from '@dreipol/t3-ui'
 import classes from './sitemap-overview.module.css'
 
 export type SitemapOverviewProps = {
-  site: string
+  site: string,
+  onSelect: (site:string) => void;
 }
-export const SitemapOverview = ({site}: SitemapOverviewProps) => {
+export const SitemapOverview = ({site, onSelect}: SitemapOverviewProps) => {
   const data = useResource<string[]>({
     url: `/api/sitemap`, params: {
       site: `${site}/sitemap.xml`
@@ -25,7 +26,7 @@ export const SitemapOverview = ({site}: SitemapOverviewProps) => {
       <List className={classes.list}>
         {!data.data?.length && <ListItem><Typography color={'signal.error'}>No sitemap found</Typography></ListItem>}
 
-        {data.data?.map((s) => (<ListItem key={s}>
+        {data.data?.map((s) => (<ListItem key={s} onClick={() => onSelect(s)}>
           <Typography color={'text.primary'} wrapText={false}>{s}</Typography>
         </ListItem>))}
       </List>
