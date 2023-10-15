@@ -31,6 +31,11 @@ import { SeoOverview } from '../src/components/seo/seo-overview'
 import { ExternalToolsOverview } from '../src/components/external-tools/external-tools-overview'
 import { CssQualityOverview } from '../src/components/css/css-quality'
 import classes from './page.module.scss'
+import { ToolsOverview } from '../src/components/tools-overview/tools-overview'
+import { AuditsOverview } from '../src/components/audits-overview/audits-overview'
+import { PageScreenshotOverview } from '../src/components/page-screenshot-overview/page-screenshot-overview'
+import { ToggleMenu } from '@dreipol/t3-ui/lib/components/toggle-menu/toggle-menu'
+import { ToggleMenuItem } from '@dreipol/t3-ui/lib/components/toggle-menu/toggle-menu-item/toggle-menu-item'
 
 export type MainPageProps = {
   site: string
@@ -44,6 +49,9 @@ export default function MainPage() {
   const pathname = usePathname()
 
   useEffect(() => {
+    if (!url) {
+      return
+    }
     const current = new URLSearchParams(Array.from(searchParams.entries())) // -> has to use this form
     current.set('site', url)
     const search = current.toString()
@@ -56,7 +64,6 @@ export default function MainPage() {
     setUrl(internalUrl)
   }
 
-  console.log(classes.root);
 
   return (<Layout
       header={
@@ -75,6 +82,12 @@ export default function MainPage() {
           </form>
         </Header>
       }>
+      <ActionsWrapper fullWidth align={'right'}>
+        <ToggleMenu value={[ 'tech', 'seo' ]}>
+          <ToggleMenuItem value={'tech'}>Tech</ToggleMenuItem>
+          <ToggleMenuItem value={'seo'}>Seo</ToggleMenuItem>
+        </ToggleMenu>
+      </ActionsWrapper>
       <div className={classes.root}>
         {!!url && <GridRow>
           <GridColumn colSpan={4}>
@@ -89,6 +102,23 @@ export default function MainPage() {
               </CardHeader>
               <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>
                 <OgOverview site={url} key={url} />
+              </CardContent>
+            </Card>
+          </GridColumn>
+
+          <GridColumn colSpan={8}>
+            <Card outlined elevated style={{ height: '600px' }}>
+              <CardHeader divider suffix={<FilterChip
+                color={'primary'}>TECH</FilterChip>}>
+                <ActionsWrapper direction={'column'}>
+                  <Typography color={'text.primary'} variant={'heading2'}>Screenshot</Typography>
+                  <Typography color={'text.secondary'} variant={'caption'}>Google&apos;s page speed insight results
+                    running
+                    lighthouse in the background</Typography>
+                </ActionsWrapper>
+              </CardHeader>
+              <CardContent scrollable style={{ maxHeight: '600px' }}>
+                <PageScreenshotOverview site={url} />
               </CardContent>
             </Card>
           </GridColumn>
@@ -273,6 +303,21 @@ export default function MainPage() {
               </CardHeader>
               <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>
                 <ExternalToolsOverview site={url} />
+              </CardContent>
+            </Card>
+          </GridColumn>
+
+          <GridColumn colSpan={4}>
+            <Card outlined elevated style={{ height: '600px' }}>
+              <CardHeader divider suffix={<FilterChip
+                color={'primary'}>TECH</FilterChip>}>
+                <ActionsWrapper direction={'column'}>
+                  <Typography color={'text.primary'} variant={'heading2'}>Audits</Typography>
+                  <Typography color={'text.secondary'} variant={'caption'}>List of packages used to scrape data</Typography>
+                </ActionsWrapper>
+              </CardHeader>
+              <CardContent scrollable style={{ maxHeight: '600px' }} noHorizontalPadding>
+                <AuditsOverview site={url} />
               </CardContent>
             </Card>
           </GridColumn>
